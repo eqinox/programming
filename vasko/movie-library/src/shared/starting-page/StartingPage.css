@@ -1,0 +1,16 @@
+.starting {
+  
+}
+
+.starting > h1{
+  padding: 0px;
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+.add-article-section {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+  width: 75%;
+}
