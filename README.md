@@ -1,3 +1,7 @@
 eto tuk se pishe neshto <br />
-git status
-aide oshte neshto i ot men
+git status <br />
+git add . <br />
+git commit -m "komentar" <br />
+git push <br />
+parolata e: <br />
+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 <br />
