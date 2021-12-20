@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 
 import classes from "./AddMovieForm.module.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector, connect } from "react-redux";
 import { notificationActions } from "../../store/notification/notification-slice";
 import { useHistory } from "react-router-dom";
 import ImageUpload from "../../shared/UI/ImageUpload";
@@ -123,7 +123,7 @@ const AddMovieForm = () => {
         </div>
         <div className={classes.control}>
           <label htmlFor="duration">Duration</label>
-          <input type="number" id="duration" required ref={duration} />
+          <input type="number" id="duration" required ref={duration} data-testid="add-movie-input" />
         </div>
         <ImageUpload onImageUpload={imageHandler} />
         <div className={classes.actions}>
@@ -134,4 +134,4 @@ const AddMovieForm = () => {
   );
 };
 
-export default AddMovieForm;
+export default connect()(AddMovieForm);

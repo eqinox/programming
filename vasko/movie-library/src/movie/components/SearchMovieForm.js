@@ -17,7 +17,7 @@ const SearchMovieForm = (props) => {
         type="search"
         placeholder="Search movie by title"
       />
-      <button>Search</button>
+      <button data-testid='search'>Search</button>
     </form>
   );
 };

@@ -7,6 +7,7 @@ import notificationSlice from "./store/notification/notification-slice";
 import movieSlice, { movieActions } from "./store/movie/movie-slice";
 import MainNavigation from "./shared/navbar/MainNavigation";
 import userSlice, { userActions } from "./store/user/user-slice";
+import SearchMovieForm from "./movie/components/SearchMovieForm";
 
 describe("reducer tests", () => {
   const store = configureStore({
@@ -16,26 +17,6 @@ describe("reducer tests", () => {
       movies: movieSlice.reducer,
     },
   });
-  // test("renders learn react link", () => {
-  //   render(
-  //     <BrowserRouter>
-  //       <Provider store={store}>
-  //         <App />
-  //       </Provider>
-  //     </BrowserRouter>
-  //   );
-  //   // Successfuly logged in eqinox@abv.bg
-  //   const linkElement = screen.getByText(/opala/i);
-  //   expect(linkElement).toBeInTheDocument();
-  // });
-
-  // test("check color of button in the navigation", () => {
-  //   render(<MainNavigation />, { wrapper: Provider });
-
-  //   const something = screen.getByLabelText("Authenticate");
-  //   console.log(something);
-  //   expect(something).toHaveStyle({ backgroundColor: "red" });
-  // });
 
   test("should return the initial state", () => {
     expect(userSlice.reducer(undefined, {})).toEqual({
@@ -63,7 +44,68 @@ describe("reducer tests", () => {
     });
   });
 
-  test("should handle new movie", () => {});
+  // test("should handle new movie", () => {});
 });
 
+describe("styling tests and thing like this", () => {
+  const store = configureStore({
+    reducer: {
+      user: userSlice.reducer,
+      notification: notificationSlice.reducer,
+      movies: movieSlice.reducer,
+    },
+  });
 
+  test("should have red backgorund-color of Authenticate", () => {
+    // render(, { wrapper: Provider });
+
+    render(
+      <BrowserRouter>
+        <Provider store={store}>
+          <MainNavigation />
+        </Provider>
+      </BrowserRouter>
+    );
+    let something = screen.getByText("Authenticate");
+    expect(something).toHaveStyle({ backgroundColor: "red" });
+  });
+
+  test("should have search button", () => {
+    // arrange
+    render(
+      <BrowserRouter>
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </BrowserRouter>
+    );
+
+    // Act
+    // ... nothing
+
+    // Assert
+    const helloWorldElement = screen.getByTestId("search");
+    // const helloWorldElement = screen.getByText("search", { exact: false }); // true is the default
+    expect(helloWorldElement).toBeInTheDocument();
+  });
+
+  // test("renders learn react link", () => {
+  //   render(
+  //     <BrowserRouter>
+  //       <Provider store={store}>
+  //         <App />
+  //       </Provider>
+  //     </BrowserRouter>
+  //   );
+  //   // Successfuly logged in eqinox@abv.bg
+  //   const linkElement = screen.getByText(/opala/i);
+  //   expect(linkElement).toBeInTheDocument();
+  // });
+
+  // test("check color of button in the navigation", () => {
+  //   render(<MainNavigation />, { wrapper: Provider });
+
+  //   const something = screen.getByLabelText("Authenticate");
+  //   expect(something).toHaveStyle({ backgroundColor: "red" });
+  // });
+});
